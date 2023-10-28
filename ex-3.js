@@ -374,4 +374,24 @@ const bills = [
 ];
 
 // Start coding here
-const billMembers;
+
+// Pull only transactions that their member are not null.
+function excludeNull(bills) {
+  return bills.filter(function(bill) {
+    return bill.member !== null;
+  });
+};
+
+// Record value that its member is not null.
+const newBills = excludeNull(bills);
+
+// Extract only name from the newBills.
+function pullUniqueName(newBills) {
+  return newBills.map(function(bill) {
+    return bill.member.name;
+  });
+};
+
+// Update the pulled name into billMembers.
+const billMembers = pullUniqueName(newBills);
+console.log(billMembers);
