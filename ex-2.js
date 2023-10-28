@@ -374,5 +374,11 @@ const bills = [
 ];
 
 // Start coding here
+function excludeNull(bills) {
+  return bills.filter(function(bill) {
+    return bill.member !== null;
+  });
+};
 
-const newBills;
+const newBills = excludeNull(bills);
+console.log(newBills);

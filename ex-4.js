@@ -374,4 +374,35 @@ const bills = [
 ];
 
 // Start coding here
-const totalMembers;
+
+// Pull only transactions that their member are not null.
+function excludeNull(bills) {
+  return bills.filter(function(bill) {
+    return bill.member !== null;
+  });
+};
+
+// Record value that its member is not null.
+const newBills = excludeNull(bills);
+
+// Extract only name from the newBills.
+function pullUniqueName(newBills) {
+  return newBills.map(function(bill) {
+    return bill.member.name;
+  });
+};
+
+// Update the pulled name into billMembers.
+const billMembers = pullUniqueName(newBills);
+
+// Filtere the unique names and assign them into a new array variable.
+function countUniqueName(billMembers) {
+  let filteredMembers = billMembers.filter(function(name, index, self) {
+    return index === self.indexOf(name);
+  });
+  return filteredMembers;
+};
+
+// Count the population in the array and assign the number into totalMembers.
+const totalMembers = countUniqueName(billMembers).length;
+console.log(`Unique Members Count: ${totalMembers}`);
